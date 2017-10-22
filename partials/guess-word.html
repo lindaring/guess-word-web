@@ -1,0 +1,22 @@
+<div class="home-theme" ng-controller="guessWordController">
+    <h1>Guess The Word</h1>
+
+    <div id="definition-wrapper">
+        <div ng-repeat="def in definition.listOfDefinitions">
+            <p>{{def.pos.name}}</p>
+            <p>- {{def.meaning}}</p>
+        </div>
+    </div>
+
+    <div id="definition-form">
+        <input class="answer" type="text" placeholder="Enter word here..." />
+        <button class="btn-primary" ng-click="getNextDefinition()">guess</button>
+        <button class="btn-secondary">skip</button>
+    </div>
+
+    <div id="score-wrapper">
+        <span class="title">score</span>
+        <span>0</span>
+        <span class="title">points</span>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+body { font-family: Calibri, Arial; }
+input[type=text].answer {
+    display: block;
+    margin: 100px auto 0 auto;
+    text-align: center;
+    height: 50px;
+    width: 60%;
+}
+
+/*-- The header --*/
+header {
+    overflow: hidden;
+    background: #27799E;
+    height: 65px;
+}
+header img {
+    height: 100%;
+    width: auto;
+}
+/*-- End of header --*/
+
+
+/*-- Home Theme --*/
+.home-theme { text-align: center; }
+.home-theme h1, .home-theme h2 {
+    padding: 45px 0 0 0;
+    letter-spacing: -5px;
+    color: #27799E;
+    font-size: 82px;
+}
+.home-theme h2 {
+    font-size: 52px;
+    letter-spacing: -3px;
+}
+.home-theme p {
+    padding: 15px 0;
+    color: #5E5E5E;
+    font-size: 20px;
+}
+.home-theme ul {
+    padding: 15px 0;
+    color: #5E5E5E;
+}
+.home-theme li {
+    padding: 5px 0;
+    word-spacing: 6px;
+}
+.home-theme button,
+.home-theme a.button,
+.home-theme a.button  {
+    margin: 40px 0 0 0;
+    padding: 6px 35px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.home-theme .btn-primary {
+    background: #50A9D0;
+    color: #FFF;
+    border: 1px solid #4A9CBF;
+}
+.home-theme .btn-primary:hover { background: #27799E; }
+.home-theme .btn-primary:active { background: #236C8C; }
+.home-theme .btn-secondary {
+    background: #FFF;
+    color: #50A9D0;
+    border: 1px solid #4A9CBF;
+}
+.home-theme .btn-secondary:hover { background: #F4F4F4; }
+.home-theme .btn-secondary:active { background: #E2E2E2; }
+/*-- End of Home Theme --*/
+
+
+/*-- TopTen --*/
+#top-ten-wrapper { text-transform: capitalize; }
+#top-ten-wrapper li > span { font-weight: bold; }
+/*-- End of TopTen --*/
+
+
+/*-- Score --*/
+#score-wrapper {
+    padding: 10px 0 0 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    border: 1px solid #27799E;
+    text-align: center;
+}
+#score-wrapper > span {
+    display: block;
+    color: #27799E;
+    font-size: 60px;
+}
+#score-wrapper > span.title { font-size: 15px; }
+/*-- End of Score --*/
+
+/*-- Definition --*/
+#definition-wrapper {
+    margin: 0 auto;
+    width: 60%;
+    text-align: left;
+}
+#definition-wrapper p:nth-child(odd) {
+    font-weight: bold;
+    padding: 30px 0 0 0;
+}
+#definition-form {
+    position: fixed;
+    bottom: 250px;
+    width: 100%;
+}
+/*-- End of Definition --*/

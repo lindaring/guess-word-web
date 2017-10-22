@@ -1,0 +1,20 @@
+<div class="home-theme" ng-controller="homeController">
+    <div>
+        <h1>Guess The Word</h1>
+        <p>Click the below button to start having fun. Earn 5 points for each word guessed
+        correctly. Let us see if you can make the top score list.</p>
+    </div>
+
+    <div id="top-ten-wrapper">
+        <h2>Top Score</h2>
+        <ul>
+            <li ng-repeat="user in topTenList">{{user.name}} <span>{{user.score}}</span></li>
+        </ul>
+    </div>
+
+    <div>
+        <a class="button btn-primary" href="./guess-word">start</a>
+        <a class="button btn-secondary">contribute</a>
+    </div>
+</div>
+<div ng-include="'partials/score.html'"></div>
