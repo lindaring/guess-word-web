@@ -57,6 +57,7 @@ header img {
     cursor: pointer;
     text-decoration: none;
 }
+#home-button-wrapper { margin-top: 50px;  }
 .home-theme .btn-primary {
     background: #50A9D0;
     color: #FFF;
@@ -90,12 +91,12 @@ header img {
     border: 1px solid #27799E;
     text-align: center;
 }
-#score-wrapper > span {
+#score-wrapper span {
     display: block;
     color: #27799E;
     font-size: 60px;
 }
-#score-wrapper > span.title { font-size: 15px; }
+#score-wrapper span.title { font-size: 15px; }
 /*-- End of Score --*/
 
 /*-- Definition --*/
@@ -110,7 +111,18 @@ header img {
 }
 #definition-form {
     position: fixed;
-    bottom: 250px;
+    bottom: 220px;
     width: 100%;
 }
+#definition-form + p {
+    margin: 10px 0 0 0;
+    position: fixed;
+    bottom: 150px;
+    width: 100%;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+#definition-form + p.correct { color: green; }
+#definition-form + p.wrong { color: red; }
 /*-- End of Definition --*/

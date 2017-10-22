@@ -2,21 +2,26 @@
     <h1>Guess The Word</h1>
 
     <div id="definition-wrapper">
-        <div ng-repeat="def in definition.listOfDefinitions">
+        <div ng-if="form.result != 'done'" ng-repeat="def in definition.listOfDefinitions">
             <p>{{def.pos.name}}</p>
             <p>- {{def.meaning}}</p>
         </div>
     </div>
 
     <div id="definition-form">
-        <input class="answer" type="text" placeholder="Enter word here..." />
-        <button class="btn-primary" ng-click="getNextDefinition()">guess</button>
-        <button class="btn-secondary">skip</button>
+        <div ng-hide="form.result == 'done'">
+            <input id="txtAnswer" class="answer" type="text" ng-model="form.enteredWord" placeholder="Enter word here..." />
+            <button class="btn-primary" ng-click="getNextDefinition()">guess</button>
+            <button class="btn-secondary" ng-click="skipQuestion()">skip</button>
+        </div>
     </div>
+
+    <p class="correct" ng-if="form.result == 'correct'">Correct :)</p>
+    <p class="wrong" ng-if="form.result == 'wrong'">Wrong :(</p>
 
     <div id="score-wrapper">
         <span class="title">score</span>
-        <span>0</span>
+        <span>{{form.score}}</span>
         <span class="title">points</span>
     </div>
 </div>

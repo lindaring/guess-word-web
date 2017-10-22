@@ -7,14 +7,14 @@ app.config(function ($routeProvider, $locationProvider) {
     $routeProvider.otherwise({redirectTo: '/error-404'});
 
     // use the HTML5 History API
-    //$locationProvider.html5Mode(true);
-    //$locationProvider.hashPrefix('');
+    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('');
 });
 
 app.constant('HOST', 'http://localhost:8585');
 app.constant('USER_ENDPOINT', '/guessword/v1/user');
 app.constant('WORD_ENDPOINT', '/guessword/v1/word');
 
-function $(element) {
+function _(element) {
     return document.getElementById(element);
 }
