@@ -2,20 +2,39 @@
     <h1>Guess The Word</h1>
 
     <div id="definition-wrapper">
-        <div ng-if="form.result != 'done'" ng-repeat="def in definition.listOfDefinitions">
+        <!-- Questions screen -->
+        <div ng-if="(form.result != 'done')" ng-repeat="def in definition.listOfDefinitions">
             <p>{{def.pos.name}}</p>
             <p>- {{def.meaning}}</p>
+        </div>
+        <!-- End screen -->
+        <div ng-show="(form.result == 'done') && (form.topTenQualified)">
+            <img src="img/smiley-faces.png" />
+        </div>
+        <div ng-show="(form.result == 'done') && (!form.topTenQualified)">
+            <img src="img/sad-smiley.png" class="sad-face" />
         </div>
     </div>
 
     <div id="definition-form">
-        <div ng-hide="form.result == 'done'">
+        <!-- Questions buttons -->
+        <div ng-hide="(form.result == 'done')">
             <input id="txtAnswer" class="answer" type="text" ng-model="form.enteredWord" placeholder="Enter word here..." />
             <button class="btn-primary" ng-click="getNextDefinition()">guess</button>
             <button class="btn-secondary" ng-click="skipQuestion()">skip</button>
         </div>
+        <!-- End buttons -->
+        <div ng-show="(form.result == 'done') && (form.topTenQualified)">
+            <input id="txtTopScore" class="answer" type="text" ng-model="user.name" placeholder="Enter your name..." />
+            <button class="button btn-primary" ng-click="saveTopTen()">Save Top Score</button>
+            <button class="button btn-secondary" ng-click="reload()">Try Again</button>
+        </div>
+        <div ng-show="(form.result == 'done') && (!form.topTenQualified)">
+            <a class="button btn-secondary" ng-click="reload()">Try Again</a>
+        </div>
     </div>
 
+    <!-- Notifications -->
     <p class="correct" ng-if="form.result == 'correct'">Correct :)</p>
     <p class="wrong" ng-if="form.result == 'wrong'">Wrong :(</p>
 

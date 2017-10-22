@@ -1,11 +1,4 @@
 body { font-family: Calibri, Arial; }
-input[type=text].answer {
-    display: block;
-    margin: 100px auto 0 auto;
-    text-align: center;
-    height: 50px;
-    width: 60%;
-}
 
 /*-- The header --*/
 header {
@@ -45,6 +38,13 @@ header img {
     padding: 5px 0;
     word-spacing: 6px;
 }
+.home-theme input[type=text].answer {
+    display: block;
+    margin: 100px auto 0 auto;
+    text-align: center;
+    height: 50px;
+    width: 60%;
+}
 .home-theme button,
 .home-theme a.button,
 .home-theme a.button  {
@@ -72,6 +72,16 @@ header img {
 }
 .home-theme .btn-secondary:hover { background: #F4F4F4; }
 .home-theme .btn-secondary:active { background: #E2E2E2; }
+.home-theme img {
+    margin: 25px auto 0 auto;
+    display: block;
+    height: 400px;
+    width: 400px;
+}
+.home-theme img.sad-face {
+    height: 500px;
+    width: 500px;
+}
 /*-- End of Home Theme --*/
 
 
