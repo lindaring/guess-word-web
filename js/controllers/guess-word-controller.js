@@ -4,11 +4,13 @@ app.controller('guessWordController', function ($scope, $timeout, $route, wordSe
     $scope.TEN_TOP_LIST = 10;
     $scope.CORRECT = 5;
     $scope.WRONG = 2;
+    $scope.PROMISE_LENGTH = 3;
 
     $scope.randomWordList = [];
     $scope.topTenList = [];
     $scope.definition = {};
     $scope.wordCounter = 0;
+    $scope.promiseCounter = 0;
 
     $scope.form = {
         correctWord: "",
@@ -29,6 +31,7 @@ app.controller('guessWordController', function ($scope, $timeout, $route, wordSe
         $scope.topTenPromise = userService.getTopTenList($scope.TEN_TOP_LIST);
         $scope.topTenPromise.then(function success(response) {
             $scope.topTenList = response.data;
+            $scope.isPageLoaded();
         }).catch(function () {
             console.log("Guess word controller :: Get top ten list failed.");
         });
@@ -53,6 +56,7 @@ app.controller('guessWordController', function ($scope, $timeout, $route, wordSe
         $scope.randomWordPromise.then(function success(response) {
             $scope.randomWordList = response.data;
 
+            $scope.isPageLoaded();
             $scope.getDefinition($scope.randomWordList[$scope.wordCounter].wordId);
         }).catch(function () {
             console.log("Guess word controller :: Get random words.");
@@ -60,11 +64,14 @@ app.controller('guessWordController', function ($scope, $timeout, $route, wordSe
     };
 
     $scope.getDefinition = function (wordId) {
+        enablePage(false);
         $scope.definitionPromise = wordService.getDefinition(wordId);
         $scope.definitionPromise.then(function success(response) {
             $scope.definition = response.data;
+            $scope.isPageLoaded();
         }).catch(function () {
             console.log("Guess word controller :: Get definition.");
+            $scope.isPageLoaded();
         });
     };
 
@@ -80,7 +87,7 @@ app.controller('guessWordController', function ($scope, $timeout, $route, wordSe
             } else {
                 //End of questions
                 $scope.evaluateScoreEnd();
-                var lastTopTen = $scope.topTenList[$scope.TEN_TOP_LIST - 1] != null ? $scope.topTenList[$scope.TEN_TOP_LIST - 1].score :
+                var lastTopTen = $scope.topTenList[$scope.TEN_TOP_LIST - 1] !== null ? $scope.topTenList[$scope.TEN_TOP_LIST - 1].score :
                     $scope.topTenList[$scope.topTenList.length - 1].score;
                 if ($scope.form.score > lastTopTen) {
                     $scope.form.topTenQualified = true;
@@ -132,6 +139,13 @@ app.controller('guessWordController', function ($scope, $timeout, $route, wordSe
         }
     };
 
+    $scope.isPageLoaded = function () {
+        $scope.promiseCounter += 1;
+        if ($scope.promiseCounter >= $scope.PROMISE_LENGTH) {
+            enablePage(true)
+        }
+    };
+
     $scope.timeOutResult = function () {
         $scope.form.resultTimeOut = $timeout(function() {
             $scope.form.result = "";
@@ -151,6 +165,7 @@ app.controller('guessWordController', function ($scope, $timeout, $route, wordSe
     };
 
     $scope.refresh = function () {
+        enablePage(false)
         $scope.getRandomWords();
         $scope.getTopTen();
         _("txtAnswer").focus();

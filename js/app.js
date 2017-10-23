@@ -18,3 +18,7 @@ app.constant('WORD_ENDPOINT', '/guessword/v1/word');
 function _(element) {
     return document.getElementById(element);
 }
+
+function enablePage(state) {
+    _("loading").style.display = state ? "none" : "block";
+}
